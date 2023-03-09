@@ -2,6 +2,8 @@
 """ Starts a Flash Web Application """
 from flask import Flask, render_template
 app = Flask(__name__)
+app.jinja_env.trim_blocks = True
+app.jinja_env.lstrip_blocks = True
 
 
 @app.route('/', strict_slashes=False)
@@ -39,6 +41,12 @@ def is_n_number(n):
 def number_template(n):
     """ display a HTML page only if n is an integer """
     return render_template('5-number.html', value=n)
+
+
+@app.route('/number_odd_or_even/<int:n>', strict_slashes=False)
+def odd_or_even(n):
+    """ display a HTML page only if n is an integer """
+    return render_template('6-number_odd_or_even.html', value=n)
 
 
 if __name__ == "__main__":
